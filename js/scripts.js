@@ -13,3 +13,26 @@ Pizza.prototype.pizzaCost = function() {
 
   this.cost += (this.quantity * (sizeHash[this.pizzaSize] + (this.meats * 2) + (this.veggies * 1)));
 }
+
+$(document).ready(function () {
+  var order = [];
+
+  $("#addPizza").submit(function() {
+    event.preventDefault();
+    var pizzaSize = $("input[name='size']").val();
+    var quantity = $("input#quantity").val();
+    var meatlist = [];
+    var meats = $("input[name='meats']:checked").map(function() {meatlist.push(this)}).get();
+
+    var veggielist = [];
+    var veggies = $("input[name='veggies']:checked").map(function() {veggielist.push(this)}).get();
+
+    var newPizza = new Pizza(quantity, pizzaSize, meatlist.length, veggielist.length);
+    newPizza.pizzaCost();
+
+    var updatedCost = (parseInt($('#costs').text()));
+
+    updatedCost += newPizza.cost;
+    $("#costs").text(updatedCost);
+  });
+});

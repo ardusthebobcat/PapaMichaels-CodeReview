@@ -12,4 +12,9 @@ describe("pizza", function() {
     pepperoniPizza.pizzaCost();
     expect(pepperoniPizza.cost).to.equal(8);
   });
+  it('tests a more complicated pizza, just in case. 2 XL triple-meat pizza with onions and black olives', function () {
+    var deluxePizza = new Pizza(2, "XL", 3, 2);
+    deluxePizza.pizzaCost();
+    expect(deluxePizza.cost).to.equal(38);
+  });
 });
