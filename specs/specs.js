@@ -6,4 +6,10 @@ describe("pizza", function() {
     expect(cheesePizza.meats).to.equal(0);
     expect(cheesePizza.veggies).to.equal(0);
   });
+
+  it('tests the cost function on a small pepperoni pizza (1,S, 1, 0)', function() {
+    var pepperoniPizza = new Pizza(1,"S", 1, 0);
+    pepperoniPizza.pizzaCost();
+    expect(pepperoniPizza.cost).to.equal(8);
+  });
 });
